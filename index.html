@@ -12,12 +12,13 @@
   <div id="app">
   	<div class="todo">
   		<h3 class="todo__title">Todo vue</h3>
-  		<input type="text" class="todo__field" placeholder="todo" v-model="val">
-  		<button class="todo__butto" @click="add">add</button>
+  		<input type="text" class="todo__field" placeholder="todo / edit" v-model="val">
+  		<button class="todo__button" @click="add">add</button>
       <ul class="todo__list">
         <li class="todo__el" v-for="item in todo">
           <div class="delete" @click="deleteTodo(item)">x</div>
           <div class="text">{{item.text}}</div>
+          <div class="edit" @click="editTodo(item)">edit</div>
         </li>
       </ul>
     </div>
@@ -55,6 +56,12 @@ var app = new Vue({
     },
     addLocal: function(){
       localStorage.setItem('todo', JSON.stringify(this.todo));
+    },
+    editTodo: function(item){
+      if(this.val.length >= 1){
+        item.text = this.val;
+        this.val = '';
+      }
     }
   }
 })  

@@ -32,3 +32,11 @@ body{
   left: -35px;
   top: 5px;
 }
+.edit{
+  cursor: pointer;
+  position: absolute;
+  right: -40px;
+  top: 5px; 
+  border: 1px solid #999;
+  padding: 3px;
+}
