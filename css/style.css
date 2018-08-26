@@ -40,3 +40,9 @@ body{
   border: 1px solid #999;
   padding: 3px;
 }
+.checkbox{
+  cursor: pointer;
+  position: absolute;
+  left: 2px;
+  top: 2px; 
+}

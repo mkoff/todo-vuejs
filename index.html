@@ -19,6 +19,7 @@
           <div class="delete" @click="deleteTodo(item)">x</div>
           <div class="text">{{item.text}}</div>
           <div class="edit" @click="editTodo(item)">edit</div>
+          <input type="checkbox" class="checkbox" @click="sorting(item)" v-model="item.check">
         </li>
       </ul>
     </div>
@@ -46,7 +47,7 @@ var app = new Vue({
   },
   methods: {
     add: function(){
-      this.todo.push({text: this.val});
+      this.todo.push({text: this.val, check: false});
       this.val = '';
       this.addLocal();
     },
@@ -61,7 +62,22 @@ var app = new Vue({
       if(this.val.length >= 1){
         item.text = this.val;
         this.val = '';
+        this.addLocal();
+      }else{
+        alert('enter a new value');
       }
+    },
+    sorting: function(item){
+      if(item.check === true){
+        item.check = false;
+        this.todo.splice(this.todo.indexOf(item), 1);
+        this.todo.unshift({text: item.text, check: item.check});
+      }else{
+        item.check = true;
+        this.todo.splice(this.todo.indexOf(item), 1);
+        this.todo.push({text: item.text, check: item.check});
+      } 
+      this.addLocal();
     }
   }
 })  
