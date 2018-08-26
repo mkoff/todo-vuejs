@@ -33,6 +33,11 @@ var app = new Vue({
     val: '',
     todo: []
   },
+  created: function () {
+    if(localStorage.todo){
+      this.todo = JSON.parse(localStorage.todo);
+    }
+  },
   watch: {
     todo: function(val){
       this.text = val;
@@ -42,9 +47,14 @@ var app = new Vue({
     add: function(){
       this.todo.push({text: this.val});
       this.val = '';
+      this.addLocal();
     },
     deleteTodo: function(item){
       this.todo.splice(this.todo.indexOf(item), 1);
+      this.addLocal();
+    },
+    addLocal: function(){
+      localStorage.setItem('todo', JSON.stringify(this.todo));
     }
   }
 })  
