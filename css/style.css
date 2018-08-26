@@ -1,0 +1,34 @@
+body{
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.todo{
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+.todo__title{
+  text-align: center;
+  background-color: #fff;
+}
+.todo__field{
+  margin: 10px 0;
+}
+.todo__list{
+  border: 1px solid #999;
+  margin: 0 auto;
+  padding: 0;
+}
+.todo__el{
+  padding: 10px;
+  list-style-type: none;
+  border-bottom: 1px solid #999;
+  position: relative;
+}
+.delete{
+  background-color: red;
+  padding: 5px 10px;
+  cursor: pointer;
+  position: absolute;
+  left: -35px;
+  top: 5px;
+}

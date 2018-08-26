@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  
+  <div id="app">
+  	<div class="todo">
+  		<h3 class="todo__title">Todo vue</h3>
+  		<input type="text" class="todo__field" placeholder="todo" v-model="val">
+  		<button class="todo__butto" @click="add">add</button>
+      <ul class="todo__list">
+        <li class="todo__el" v-for="item in todo">
+          <div class="delete" @click="deleteTodo(item)">x</div>
+          <div class="text">{{item.text}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    val: '',
+    todo: []
+  },
+  watch: {
+    todo: function(val){
+      this.text = val;
+    }
+  },
+  methods: {
+    add: function(){
+      this.todo.push({text: this.val});
+      this.val = '';
+    },
+    deleteTodo: function(item){
+      this.todo.splice(this.todo.indexOf(item), 1);
+    }
+  }
+})  
+</script>
+</body>
+</html>
